@@ -5,8 +5,8 @@ This module lets you practice  ** using objects **, including:
   -- accessing their DATA via INSTANCE VARIABLES
 
 Authors: David Mutchler, Dave Fisher, Vibha Alangar, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Bryan Wolfe.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -14,8 +14,9 @@ import rosegraphics as rg
 def main():
     """ Calls the other functions to demonstrate and/or test them. """
     # Test your functions by putting calls to them here:
-
-
+    two_circles()
+    circle_and_rectangle()
+    lines()
 def two_circles():
     """
     -- Constructs an rg.RoseWindow.
@@ -27,14 +28,25 @@ def two_circles():
     -- Waits for the user to press the mouse, then closes the window.
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement this function, per its green doc-string above.
+    # Done: 2. Implement this function, per its green doc-string above.
     #    -- ANY two rg.Circle objects that meet the criteria are fine.
     #    -- File  COLORS.pdf  lists all legal color-names.
     # Put a statement in   main   to test this function
     #    (by calling this function).
     # ------------------------------------------------------------------
 
-
+    window = rg.RoseWindow(400, 400)
+    center_point = rg.Point(200, 200)
+    center_point2 = rg.Point(100,100)
+    rad = 14
+    rad1 = 10
+    circle1 = rg.Circle(center_point,rad)
+    circle1.fill_color = 'green'
+    circle2 = rg.Circle(center_point2, rad1)
+    circle1.attach_to(window)
+    circle2.attach_to(window)
+    window.render()
+    window.close_on_mouse_click()
 def circle_and_rectangle():
     """
     -- Constructs an rg.RoseWindow.
@@ -67,7 +79,7 @@ def circle_and_rectangle():
            150.0
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement this function, per its green doc-string above.
+    # Done: 3. Implement this function, per its green doc-string above.
     #   -- ANY objects that meet the criteria are fine.
     # Put a statement in   main   to test this function
     #    (by calling this function).
@@ -75,7 +87,35 @@ def circle_and_rectangle():
     # IMPORTANT: Use the DOT TRICK to guess the names of the relevant
     #       instance variables for outline thickness, etc.
     # ------------------------------------------------------------------
-
+    window = rg.RoseWindow(400, 400)
+    center_point = rg.Point(200, 200)
+    rad = 14
+    circle1 = rg.Circle(center_point, rad)
+    circle1.fill_color = 'blue'
+    x1 = 50
+    x2 = 75
+    y1 = 50
+    y2 = 100
+    pt1 = rg.Point(x1, y1)
+    pt2 = rg.Point(x2, y2)
+    rect1 = rg.Rectangle(pt1, pt2)
+    rect1.attach_to(window)
+    circle1.attach_to(window)
+    window.render()
+    window.close_on_mouse_click()
+    print(1)
+    print(circle1.fill_color)
+    print(center_point)
+    print(200)
+    print(200)
+    print(1)
+    print('none')
+    centerx = (x1+x2)/2
+    centery = (y1+y2)/2
+    centerrect = rg.Point(centerx, centery)
+    print(centerrect)
+    print(centerx)
+    print(centery)
 
 def lines():
     """
@@ -99,8 +139,26 @@ def lines():
 
     -- Waits for the user to press the mouse, then closes the window.
     """
-    # TODO: 4. Implement and test this function.
+    # Done: 4. Implement and test this function.
+    window = rg.RoseWindow(400,400)
+    pt1 = rg.Point(50,50)
+    pt2 = rg.Point(100,100)
+    pt3 = rg.Point(150, 150)
+    pt4 = rg.Point(300, 150)
 
+    line1 = rg.Line(pt1, pt2)
+    line2 = rg.Line(pt3, pt4)
+    line2.thickness = 5
+    center = line2.get_midpoint()
+    x = center.x
+    y = center.y
+    line1.attach_to(window)
+    line2.attach_to(window)
+    window.render()
+    print(center)
+    print(x)
+    print(y)
+    window.close_on_mouse_click()
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
